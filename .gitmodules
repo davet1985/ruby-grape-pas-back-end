@@ -1,0 +1,3 @@
+[submodule "ruby-ansible-vagrant-base"]
+	path = ruby-ansible-vagrant-base
+	url = https://github.com/davet1985/ruby-ansible-vagrant-base.git
