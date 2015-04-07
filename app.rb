@@ -8,16 +8,14 @@ module Sample
     format :json
 
     get :patients do
-      JSON.parse('{
-        "patients": [
+      JSON.parse('[
           {
             "id" : 1
           },
           {
             "id" : 2
           }
-        ]
-      }')
+        ]')
     end
 
     get '/patient/:id' do
