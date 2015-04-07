@@ -8,7 +8,8 @@ module Sample
     format :json
 
     get :patients do
-      JSON.parse('[
+      JSON.parse('{
+        "patients": [
           {
             "id" : 1,
             "firstName" : "Dave",
@@ -19,13 +20,20 @@ module Sample
             "firstName" : "Fred",
             "lastName" : "Flintstone"
           }
-        ]')
+        ]
+      }')
     end
 
     get '/patient/:id' do
       JSON.parse("{
-        \"id\" : #{params[:id]}
+        \"id\" : #{params[:id]},
+        \"firstName\" : \"Dave\",
+        \"lastName\" : \"Thompson\"
       }")
+    end
+
+    post '/patient/:id' do
+      puts "Saving patient #{params[:id]}"
     end
 
   end
