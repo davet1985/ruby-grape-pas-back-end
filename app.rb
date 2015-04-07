@@ -10,10 +10,14 @@ module Sample
     get :patients do
       JSON.parse('[
           {
-            "id" : 1
+            "id" : 1,
+            "firstName" : "Dave",
+            "lastName" : "Thompson"
           },
           {
-            "id" : 2
+            "id" : 2,
+            "firstName" : "Fred",
+            "lastName" : "Flintstone"
           }
         ]')
     end
