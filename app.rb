@@ -1,5 +1,4 @@
 require 'grape'
-require 'json'
 
 module Sample
 
@@ -7,33 +6,35 @@ module Sample
 
     format :json
 
-    get :patients do
-      JSON.parse('{
-        "patients": [
-          {
-            "id" : 1,
-            "firstName" : "Dave",
-            "lastName" : "Thompson"
-          },
-          {
-            "id" : 2,
-            "firstName" : "Fred",
-            "lastName" : "Flintstone"
-          }
-        ]
-      }')
+    namespace :patient do
+      post do
+        patient = Sample::Patient.create!(
+          firstName: params[:firstName],
+          lastName: params[:lastName]
+        )
+      end
+
+      get ':_id' do
+        patient = Sample::Patient.find(params[:_id])
+        error! "Not Found", 404 unless patient
+        patient
+      end
+
+      put ':_id' do
+        patient = Sample::Patient.find(params[:_id])
+        error! "Not Found", 404 unless patient
+        values = {}
+        values[:firstName] = params[:firstName] if params.key?(:firstName)
+        values[:lastName] = params[:lastName] if params.key?(:lastName)
+        patient.update_attributes!(values)
+        patient
+      end
     end
 
-    get '/patient/:id' do
-      JSON.parse("{
-        \"id\" : #{params[:id]},
-        \"firstName\" : \"Dave\",
-        \"lastName\" : \"Thompson\"
-      }")
-    end
-
-    post '/patient/:id' do
-      puts "Saving patient #{params[:id]}"
+    namespace :patients do
+      get do
+       Sample::Patient.all()
+      end
     end
 
   end
