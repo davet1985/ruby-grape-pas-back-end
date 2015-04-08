@@ -7,6 +7,7 @@ gem 'grape-entity'
 gem 'rack-cors'
 gem 'mongoid'
 gem 'json'
+gem 'puma'
 
 group :test, :development do
   gem 'shotgun'
