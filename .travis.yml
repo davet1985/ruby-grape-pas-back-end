@@ -1,3 +1,8 @@
+language: ruby
+before_install:
+  - gem install bundler
+rvm:
+  - 2.2.1
 deploy:
   provider: heroku
   api_key: "6a670ba1-e6ca-4130-b593-6b1b8af1804f"
