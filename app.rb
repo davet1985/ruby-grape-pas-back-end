@@ -23,11 +23,9 @@ module Sample
       put ':_id' do
         patient = Sample::Patient.find(params[:_id])
         error! "Not Found", 404 unless patient
-        values = {}
-        values[:firstName] = params[:firstName] if params.key?(:firstName)
-        values[:lastName] = params[:lastName] if params.key?(:lastName)
-        patient.update_attributes!(values)
-        patient
+        patientDetails = params.to_h
+        patientDetails.delete("_id")
+        patient.update_attributes!(patientDetails)
       end
     end
 
