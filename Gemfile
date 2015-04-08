@@ -8,6 +8,7 @@ gem 'rack-cors'
 gem 'mongoid'
 gem 'json'
 gem 'puma'
+gem 'rake'
 
 group :test, :development do
   gem 'shotgun'
