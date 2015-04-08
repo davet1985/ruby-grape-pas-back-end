@@ -8,3 +8,14 @@ development:
       password: admin
   options:
     raise_not_found_error: false
+
+production:
+  sessions:
+    default:
+      database: pas
+      hosts:
+        - ds061601.mongolab.com:61601
+      username: admin
+      password: admin
+  options:
+    raise_not_found_error: false
