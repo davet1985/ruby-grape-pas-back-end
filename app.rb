@@ -8,10 +8,7 @@ module Sample
 
     namespace :patient do
       post do
-        patient = Sample::Patient.create!(
-          firstName: params[:firstName],
-          lastName: params[:lastName]
-        )
+        patient = Sample::Patient.create!(params.to_h)
       end
 
       get ':_id' do
