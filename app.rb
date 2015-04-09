@@ -24,6 +24,13 @@ module Sample
         patientDetails.delete("_id")
         patient.update_attributes!(patientDetails)
       end
+
+      delete ':_id' do
+        puts 'deleting...'
+        patient = Sample::Patient.find(params[:_id])
+        error! "Not Found", 404 unless patient
+        patient.destroy
+      end
     end
 
     namespace :patients do

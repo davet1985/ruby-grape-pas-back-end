@@ -8,7 +8,6 @@ Mongoid.load!("config/mongoid.yml", ENV['RACK_ENV'] || :development)
 use Rack::Cors do
   allow do
     origins '*'
-    resource '*', headers: :any, methods: [:post, :put]
   end
 end
 
