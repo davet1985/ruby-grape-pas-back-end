@@ -7,3 +7,4 @@ deploy:
   provider: heroku
   api_key: "6a670ba1-e6ca-4130-b593-6b1b8af1804f"
   app: across-ruby-grape
+  skip_cleanup: true

@@ -10,6 +10,6 @@ gem 'json'
 gem 'puma'
 gem 'rake'
 
-group :test, :development do
+group :development do
   gem 'shotgun'
 end
